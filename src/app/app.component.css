@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+body{
+ padding: 0;
+ margin: 0;
+}
+form{
+ max-width: 30em;
+ margin: 4em auto;
+ position: relative;
+ background: #f4f4f4;
+ padding: 2em 3em;
+}
+form h1{
+    font-family: "Raleway";
+    color:#F97300; 
+}
+form input[type=text]::placeholder{
+   font-family: "Raleway";
+   color:#666; 
+}
+form .data{
+    margin-top: 1em;
+}
+form .data li{
+ background: #fff;
+ border-left: 4px solid #F97300;
+ padding: 1em;
+ margin: 1em auto;
+ color: #666;
+ font-family: "Raleway";
+}
+form .data li i{
+    float: right;
+    color: #888;
+    cursor: pointer;
+}
+form .input-group-text{
+    background: #F97300;
+    border-radius: 50%;
+    width: 5em;
+    height: 5em;
+    padding: 1em 23px;
+    color: #fff;
+    position: absolute;
+    right: 13px;
+    top: 68px;
+    cursor: pointer;
+}
+form .input-group-text i{
+    font-size: 2em;
+}
+form .form-control{
+ height: 3em;
+    font-family: "Raleway";
+}
+form .form-control:focus{
+ box-shadow: 0;
+}
+
+
+
+.example-list {
+    width: 500px;
+    max-width: 100%;
+    border: solid 1px #ccc;
+    min-height: 60px;
+    display: block;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .example-box {
+    padding: 20px 10px;
+    border-bottom: solid 1px #ccc;
+    color: rgba(0, 0, 0, 0.87);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    cursor: move;
+    background: white;
+    font-size: 14px;
+  }
+  
+  .cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+  
+  .cdk-drag-placeholder {
+    opacity: 0;
+  }
+  
+  .cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+  
+  .example-box:last-child {
+    border: none;
+  }
+  
+  .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }

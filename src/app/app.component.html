@@ -1,20 +1,20 @@
 <div class="container">
-<form [formGroup]="toDoForm" (ngSubmit)="onClick()">
-<div class="form-group">
-<h1 class="text-center text-danger">To Do</h1>
-<div class="input-group-prepend">
-<input type="text" class="form-control" placeholder=" Add To Do" formControlName="inputbox">
-<button class="input-group-button">ADD</button>
-</div>
-</div>
-</form>
-</div>
-<div class="container">
-<div *ngFor="let pushvalue of inputArray, index as i ">
-    <div class="input-group-prepend"> 
-       <div class="form-control"> {{pushvalue}}</div>
-    <button (click)="onDelete(i)" class="input-group-button">Delete</button>    
-  </div>
-
-</div>
+  <form [formGroup]="toDoForm" (ngSubmit)="onClick()">
+    <div class="form-group">
+      <h1 class="text-center text-danger">To Do</h1>
+      <div class="input-group-prepend">
+        <input type="text" class="form-control" placeholder=" Add To Do" formControlName="inputbox">
+        <button  type="submit" class="input-group-text">
+        <i class="material-icons">add</i></button>
+      </div>
+      </div>
+    <div cdkDropList  class="example-list" class="data" (cdkDropListDropped)="drop($event)">
+      <ul class="list-unstyled">
+          <li [@moveInLeft] class="example-box" *ngFor="let todo of inputArray, index as i" cdkDrag>{{todo}}
+            <i (click)="edit(i, todo)" class="material-icons">edit</i> 
+            <i (click)="onDelete(i)" class="material-icons">delete</i>
+          </li>
+      </ul>
+    </div>
+  </form>
 </div>
