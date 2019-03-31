@@ -10,9 +10,9 @@
       </div>
     <div cdkDropList  class="example-list" class="data" (cdkDropListDropped)="drop($event)">
       <ul class="list-unstyled">
-          <li [@moveInLeft] class="example-box" *ngFor="let todo of inputArray, index as i" cdkDrag>{{todo}}
-            <i (click)="edit(i, todo)" class="material-icons">edit</i> 
-            <i (click)="onDelete(i)" class="material-icons">delete</i>
+          <li [@moveInLeft] *ngFor="let todo of inputArray, index as i" cdkDrag>{{todo}}
+              <i (click)="onDelete(i)" class="material-icons">delete</i>
+              <i (click)="edit(i, todo)" class="material-icons">edit</i> 
           </li>
       </ul>
     </div>
