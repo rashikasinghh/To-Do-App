@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import {
   trigger,
@@ -32,37 +32,60 @@ import { UpdateComponent } from './update/update.component';
  ]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
 
 constructor(public dialog: MatDialog) {}
 
-inputArray = [];
+inputtodos = [];
+
   toDoForm = new FormGroup({
     inputbox: new FormControl('')
   });
 
-  onClick() {
-   const a = this.toDoForm.value;
+  ngOnInit() {
+    const input = localStorage.getItem('todos');
+    if (input) {
+      this.inputtodos = JSON.parse(input);
+    }
+  }
+
+onClick() {
+  const a = this.toDoForm.value;
   const inputvalue = a.inputbox;
-  this.inputArray.push(inputvalue);
+  this.inputtodos.push(inputvalue);
+  localStorage.setItem('todos', JSON.stringify(this.inputtodos));
+  const input = localStorage.getItem('todos');
+    if (input) {
+      this.inputtodos = JSON.parse(input);
+    }
   this.toDoForm.reset();
   }
 
 onDelete(i) {
-this.inputArray.splice(i, 1);
+this.inputtodos.splice(i, 1);
+localStorage.setItem('todos', JSON.stringify(this.inputtodos));
+  const input = localStorage.getItem('todos');
+    if (input) {
+      this.inputtodos = JSON.parse(input);
+    }
 }
 
 edit(i, todo): void {
   const index = i ;
   localStorage.setItem('todo', todo);
    this.dialog.open(UpdateComponent)
-  .afterClosed()
+    .afterClosed()
     .subscribe(result => {
-      this.inputArray.splice(index, 1, result);
+      this.inputtodos.splice(index, 1, result);
+      localStorage.setItem('todos', JSON.stringify(this.inputtodos));
+      const input = localStorage.getItem('todos');
+      if (input) {
+        this.inputtodos = JSON.parse(input);
+      }
     });
 }
 
 drop(event: CdkDragDrop<string[]>) {
-  moveItemInArray(this.inputArray, event.previousIndex, event.currentIndex);
-}
+  moveItemInArray(this.inputtodos, event.previousIndex, event.currentIndex);
+  }
 }
